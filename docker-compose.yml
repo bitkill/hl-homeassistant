@@ -26,7 +26,7 @@ services:
 
   # MariaDb
   mariadb:
-    image: mariadb/server:10.3
+    image: mariadb:10.6
     container_name: mariadb
     restart: unless-stopped
     environment:
