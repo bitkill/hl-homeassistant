@@ -1,0 +1,60 @@
+version: '3.7'
+
+services:
+
+  # Home assistant core
+  homeassistant:
+    container_name: homeassistant
+    image: homeassistant/home-assistant:latest
+    network_mode: "host"
+    ports:
+      - "8123:8123"
+    volumes:
+      - /config/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+    # Bluetooth, zigbee, z-wave
+    # - /dev/ttyACM0:/dev/ttyACM0:rwm
+    restart: always
+    depends_on:
+      - mariadb
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://127.0.0.1:8123" ]
+      interval: 30s
+      timeout: 10s
+      retries: 6
+
+  # MariaDb
+  mariadb:
+    image: mariadb/server:10.3
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: ha_db
+      MYSQL_USER: homeassistant
+      MYSQL_PASSWORD: "${HA_MYSQL_PASSWORD}"
+    user: "${LOCAL_USER}:${LOCAL_USER}"
+    volumes:
+      # Local path where the database will be stored.
+      - /config/mariadb:/var/lib/mysql
+    # Don't expose ports to the outside
+    # ports:
+    #   - "3306:3306"
+
+  # Node-RED
+  nodered:
+    container_name: nodered
+    image: nodered/node-red:latest
+    ports:
+      - "1880:1880"
+    volumes:
+      # Local path where all Node-RED config will be stored.
+      - ./config/nodered:/data
+    depends_on:
+      - homeassistant
+    environment:
+      TZ: "Europe/Lisbon"
+    user: "${LOCAL_USER}:${LOCAL_USER}"
+    restart: unless-stopped
+

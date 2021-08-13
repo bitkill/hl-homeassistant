@@ -1,0 +1,10 @@
+# Secrets
+.env
+
+# Configs
+data/homeassistant
+data/nodered
+
+
+# IntelliJ
+.idea
