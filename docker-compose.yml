@@ -12,7 +12,7 @@ services:
     volumes:
       - /config/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
-    devices:
+    devices: []
     # Bluetooth, zigbee, z-wave
     # - /dev/ttyACM0:/dev/ttyACM0:rwm
     restart: always
