@@ -30,10 +30,10 @@ services:
     container_name: mariadb
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-      MYSQL_DATABASE: ha_db
-      MYSQL_USER: homeassistant
-      MYSQL_PASSWORD: "${HA_MYSQL_PASSWORD}"
+      MARIADB_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MARIADB_DATABASE: ha_db
+      MARIADB_USER: homeassistant
+      MARIADB_PASSWORD: "${HA_MYSQL_PASSWORD}"
     user: "${LOCAL_USER}:${LOCAL_USER}"
     volumes:
       # Local path where the database will be stored.
