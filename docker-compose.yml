@@ -54,7 +54,7 @@ services:
     depends_on:
       - homeassistant
     environment:
-      TZ: "Europe/Lisbon"
+      TZ: "${TIMEZONE}"
     user: "${LOCAL_USER}:${LOCAL_USER}"
     restart: unless-stopped
 
