@@ -10,7 +10,7 @@ services:
     ports:
       - "8123:8123"
     volumes:
-      - /config/homeassistant:/config
+      - ./data/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
     devices: []
     # Bluetooth, zigbee, z-wave
@@ -37,7 +37,7 @@ services:
     user: "${LOCAL_USER}:${LOCAL_USER}"
     volumes:
       # Local path where the database will be stored.
-      - /config/mariadb:/var/lib/mysql
+      - ./data/mariadb:/var/lib/mysql
     # Don't expose ports to the outside
     # ports:
     #   - "3306:3306"
@@ -50,7 +50,7 @@ services:
       - "1880:1880"
     volumes:
       # Local path where all Node-RED config will be stored.
-      - ./config/nodered:/data
+      - ./data/nodered:/data
     depends_on:
       - homeassistant
     environment:
