@@ -37,7 +37,7 @@ services:
     user: "${LOCAL_USER}:${LOCAL_USER}"
     volumes:
       # Local path where the database will be stored.
-      - ./data/mariadb:/var/lib/mysql
+      - ./data/mariadb:/var/lib/mysql:rw
     # Don't expose ports to the outside
     # ports:
     #   - "3306:3306"
