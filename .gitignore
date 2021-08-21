@@ -4,6 +4,7 @@
 # Configs
 data/homeassistant
 data/nodered
+data/mariadb
 
 
 # IntelliJ
