@@ -1,14 +1,13 @@
 version: '3.7'
 
 services:
-
   # Home assistant core
   homeassistant:
     container_name: homeassistant
     image: homeassistant/home-assistant:latest
     network_mode: host
-    ports:
     user: "${LOCAL_USER}:${LOCAL_USER}"
+    ports:
       - 8123:8123
     volumes:
       - ./data/homeassistant:/config
