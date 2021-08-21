@@ -6,9 +6,10 @@ services:
   homeassistant:
     container_name: homeassistant
     image: homeassistant/home-assistant:latest
-    network_mode: "host"
+    network_mode: host
     ports:
-      - "8123:8123"
+    user: "${LOCAL_USER}:${LOCAL_USER}"
+      - 8123:8123
     volumes:
       - ./data/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
