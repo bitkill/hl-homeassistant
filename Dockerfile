@@ -3,12 +3,9 @@
 
 FROM homeassistant/home-assistant:latest
 
-ARG USER
-
 # Create user (if not exist already)
-RUN adduser -S ${USER}
+RUN adduser -S $(whoami)
 
 # Chown folders
-RUN chown -R ${USER}:${USER} /var/run/s6
+RUN chown -R $(whoami):$(whoami) /var/run/s6
 
-USER ${USER}
