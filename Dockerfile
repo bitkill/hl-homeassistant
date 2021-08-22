@@ -9,7 +9,7 @@ ENV UID=1000
 # Create user (if not exist already)
 RUN adduser \
 	--gecos "" \
-	--disabled-password
+	--disabled-password \
 	--ingroup "$USER" \
 	--no-create-home \
 	--uid "$UID" \
