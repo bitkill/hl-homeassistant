@@ -8,6 +8,7 @@ tts:
 recorder:
   purge_keep_days: 5
   # docs: https://docs.sqlalchemy.org/en/14/core/engines.html
+  # TODO: import password from env var
   db_url: mysql://homeassistant:password@mariadb:3306/ha_db
 
 group: !include groups.yaml

@@ -41,11 +41,20 @@ services:
     volumes:
       # Local path where the database will be stored.
       - ./data/mariadb:/var/lib/mysql:rw
+    # Expose in the internal docker network
     expose:
       - 3306
     # Don't expose ports to the outside
     # ports:
     #   - "3306:3306"
+
+    adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8080:8080
+      depends_on:
+        - mariadb
 
   # Node-RED
   nodered:
