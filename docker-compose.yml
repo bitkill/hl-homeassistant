@@ -10,6 +10,8 @@ services:
     # user: "${LOCAL_USER}:${LOCAL_USER}"
     ports:
       - 8123:8123
+    environment:
+      HA_DB_PASSWORD: "${HA_DB_PASSWORD}"
     volumes:
       - ./data/homeassistant:/config
       - ./overrides/homeassistant/config/configuration.yaml:/config/configuration.yaml
