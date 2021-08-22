@@ -19,6 +19,6 @@ RUN adduser \
 	--uid "$UID" \
 	${USER}
 
-COPY addons/homeassistant/fix-attrs.d /etc/fix-attrs.d
+COPY overrides/homeassistant/fix-attrs.d /etc/fix-attrs.d
 
 USER ${USER}
