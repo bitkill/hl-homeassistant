@@ -6,7 +6,11 @@ FROM homeassistant/home-assistant:latest
 ENV USER=docker
 ENV UID=1000
 
-# Create user (if not exist already)
+# Create group
+RUN addgroup \
+	-S docker
+
+# Create user
 RUN adduser \
 	--gecos "" \
 	--disabled-password \
@@ -15,6 +19,6 @@ RUN adduser \
 	--uid "$UID" \
 	${USER}
 
-# Chown folders
-RUN chown -R $(whoami):$(whoami) /var/run/s6
+COPY addons/homeassistant/fix-attrs.d /etc/fix-attrs.d
 
+USER ${USER}
