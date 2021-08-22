@@ -8,8 +8,6 @@ services:
     # image: homeassistant/home-assistant:latest
     network_mode: host
     # user: "${LOCAL_USER}:${LOCAL_USER}"
-    environment:
-
     ports:
       - 8123:8123
     volumes:
