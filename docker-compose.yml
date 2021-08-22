@@ -6,7 +6,7 @@ services:
     build:
       context: .
     # image: homeassistant/home-assistant:latest
-    network_mode: host
+    # network_mode: host
     # user: "${LOCAL_USER}:${LOCAL_USER}"
     ports:
       - 8123:8123
