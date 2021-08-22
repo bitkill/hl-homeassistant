@@ -23,4 +23,3 @@ RUN adduser \
 
 COPY overrides/homeassistant/fix-attrs.d /etc/fix-attrs.d
 
-USER ${USER}
