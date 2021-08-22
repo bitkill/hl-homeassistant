@@ -10,6 +10,8 @@ ENV UID=1000
 RUN addgroup \
 	-S docker
 
+RUN addgroup root docker
+
 # Create user
 RUN adduser \
 	--gecos "" \
