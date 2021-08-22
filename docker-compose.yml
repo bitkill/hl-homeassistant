@@ -29,7 +29,6 @@ services:
   # MariaDb
   mariadb:
     image: mariadb:10.6
-    container_name: mariadb
     restart: unless-stopped
     environment:
       MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
@@ -40,6 +39,8 @@ services:
     volumes:
       # Local path where the database will be stored.
       - ./data/mariadb:/var/lib/mysql:rw
+    expose:
+      - 3306
     # Don't expose ports to the outside
     # ports:
     #   - "3306:3306"
