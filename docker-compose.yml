@@ -12,6 +12,7 @@ services:
       - 8123:8123
     volumes:
       - ./data/homeassistant:/config
+      - ./overrides/config/configuration.yaml:/config/configuration.yaml
       - /etc/localtime:/etc/localtime:ro
     devices: []
     # Bluetooth, zigbee, z-wave
