@@ -18,11 +18,11 @@ services:
       # and `udevadm info --name=/dev/tty<device>`
       - /dev/ttyACM0:/dev/ttyACM0:rwm
     ports:
-      - 8088
+      - 8089
     environment:
       - DECONZ_DEVICE=/dev/ttyACM0
-      - DECONZ_WEB_PORT=8088
-      - DECONZ_WS_PORT=8088
+      - DECONZ_WEB_PORT=8089
+      - DECONZ_WS_PORT=8089
       - DEBUG_INFO=1
       - DEBUG_APS=0
       - DEBUG_ZCL=0
