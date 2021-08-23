@@ -16,9 +16,8 @@ services:
       - ./data/homeassistant:/config
       - ./overrides/homeassistant/config/configuration.yaml:/config/configuration.yaml
       - /etc/localtime:/etc/localtime:ro
-    devices: []
-    # Bluetooth, zigbee, z-wave
-    # - /dev/ttyACM0:/dev/ttyACM0:rwm
+    # devices: # Bluetooth, zigbee, z-wave
+    #   - /dev/ttyACM0:/dev/ttyACM0:rwm
     restart: always
     depends_on:
       - mariadb

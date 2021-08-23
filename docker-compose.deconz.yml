@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  homeassistant:
+    depends_on:
+      - deconz
+
+  # Zigbee stick software
+  deconz:
+    image: marthoc/deconz
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /data/deconz:/root/.local/share/dresden-elektronik/deCONZ
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0:rwm
+    ports:
+      - 8088
+    environment:
+      - DECONZ_WEB_PORT=8088
+      - DECONZ_WS_PORT=8088
+      - DEBUG_INFO=1
+      - DEBUG_APS=0
+      - DEBUG_ZCL=0
+      - DEBUG_ZDP=0
+      - DEBUG_OTAU=0

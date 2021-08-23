@@ -5,6 +5,7 @@
 data/homeassistant
 data/nodered
 data/mariadb
+data/deconz
 
 
 # IntelliJ
