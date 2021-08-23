@@ -14,6 +14,8 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /data/deconz:/root/.local/share/dresden-elektronik/deCONZ
     devices:
+      # look for your conbee using: `lsusb`
+      # and `udevadm info --name=/dev/tty<device>`
       - /dev/ttyACM0:/dev/ttyACM0:rwm
     ports:
       - 8088
