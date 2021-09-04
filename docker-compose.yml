@@ -6,6 +6,7 @@ services:
     build:
       context: .
     # image: homeassistant/home-assistant:latest
+    ## Security Warning: Only enable host network mode to find integrations
     # network_mode: host
     # user: "${LOCAL_USER}:${LOCAL_USER}"
     ports:
@@ -16,6 +17,7 @@ services:
       - ./data/homeassistant:/config
       - ./overrides/homeassistant/config/configuration.yaml:/config/configuration.yaml
       - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     devices: # Bluetooth, zigbee, z-wave
       - /dev/ttyACM0:/dev/ttyACM0:rwm
     restart: always
@@ -47,15 +49,22 @@ services:
     # ports:
     #   - "3306:3306"
 
-  adminer:
-    image: adminer
-    restart: always
+  # mqtt server
+  mosquitto:
+    image: eclipse-mosquitto
+    restart: unless-stopped
     ports:
-      - 8088:8080
-    depends_on:
-      - mariadb
+      - "1883:1883"
+      - "1884:1884"
+    volumes:
+      - "./data/mosquitto/config:/mosquitto/config"
+      - "./data/mosquitto/data:/mosquitto/data"
+      - "./data/mosquitto/log:/mosquitto/log"
+    environment:
+      TZ: "${TIMEZONE}"
+    user: "${LOCAL_USER}:${LOCAL_USER}"
 
-  # Node-RED
+  # Node-RED, automate with blocks
   nodered:
     image: nodered/node-red:latest
     ports:

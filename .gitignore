@@ -6,6 +6,9 @@ data/homeassistant
 data/nodered
 data/mariadb
 data/deconz
+data/mosquitto/data
+data/mosquitto/log
+data/mosquitto/config
 
 
 # IntelliJ

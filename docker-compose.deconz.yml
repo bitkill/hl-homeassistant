@@ -5,7 +5,7 @@ services:
     depends_on:
       - deconz
 
-  # Zigbee stick software
+  # Zigbee stick software, ZHA is a better option if you use multiple vendors IMO
   deconz:
     image: marthoc/deconz
     restart: always
