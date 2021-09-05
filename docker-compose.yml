@@ -12,7 +12,8 @@ services:
     ports:
       - 8123:8123
     environment:
-      HA_DB_PASSWORD: "${HA_DB_PASSWORD}"
+      HA_DB_URL: "${HA_DB_URL}"
+      MQTT_PASSWORD: "${MQTT_PASSWORD}"
     volumes:
       - ./data/homeassistant:/config
       - ./overrides/homeassistant/config/configuration.yaml:/config/configuration.yaml
