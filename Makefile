@@ -4,6 +4,7 @@ up: # Starts up the project's containers
 	docker-compose \
 	-f docker-compose.yml \
 	-f docker-compose.tools.yml \
+	-f docker-compose.traefik.yml \
 	up -d
 
 down: # Stops containers
@@ -11,6 +12,7 @@ down: # Stops containers
 	-f docker-compose.yml \
 	-f docker-compose.tools.yml \
 	-f docker-compose.deconz.yml \
+	-f docker-compose.traefik.yml \
 	down
 
 build: # Builds custom docker images
