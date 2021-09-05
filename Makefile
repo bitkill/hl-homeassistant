@@ -20,3 +20,5 @@ logs:
 	-f docker-compose.deconz.yml \
 	logs -f
 
+setup:
+	cp .env.example .env
