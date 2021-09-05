@@ -13,6 +13,9 @@ down: # Stops containers
 	-f docker-compose.deconz.yml \
 	down
 
+build: # Builds custom docker images
+	docker-compose build
+
 logs: # View docker logs for this project
 	docker-compose \
 	-f docker-compose.yml \
@@ -20,8 +23,5 @@ logs: # View docker logs for this project
 	-f docker-compose.deconz.yml \
 	logs -f
 
-setup:
+setup: # Copy necessary files to a successful deployment
 	cp .env.example .env
-
-use-hass-config: # Uses sample home assistant configuration
-	cp samples/homeassistant/configuration.yaml data/homeassistant/configuration.yaml
