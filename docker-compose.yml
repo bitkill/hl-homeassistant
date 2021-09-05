@@ -11,7 +11,7 @@ services:
     # user: "${LOCAL_USER}:${LOCAL_USER}"
     ports:
       - 8123:8123
-      - 51827:51827 # Homekit test
+      - 21063:21063 # Homekit integration default port
     environment:
       HA_DB_URL: "${HA_DB_URL}"
       MQTT_PASSWORD: "${MQTT_PASSWORD}"
