@@ -14,4 +14,4 @@ This is done by changing the config in the host machine, usually located in `/et
 enable-reflector=yes
 ```
 
-This integration is still a WIP feature.
+This integration is still a WIP feature, the current workaround is to share the dbus socket (**dangerous**).

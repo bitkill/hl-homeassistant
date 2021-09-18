@@ -20,6 +20,10 @@ services:
       - ./overrides/homeassistant/config/configuration.yaml:/config/configuration.yaml
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      # Dangerous: Sharing dbus in order for mDNS to work
+      # TODO: Remove this as soon a working alternative is found
+      - /run/dbus:/run/dbus
+      - /var/run/dbus:/var/run/dbus
     devices: # Bluetooth, zigbee, z-wave
       - /dev/ttyACM0:/dev/ttyACM0:rwm
     restart: always
