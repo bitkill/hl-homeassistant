@@ -18,6 +18,8 @@ services:
     # Don't expose ports to the outside
     # ports:
     #   - "3306:3306"
+
+  # Manage the database
   adminer:
     image: adminer
     restart: always
