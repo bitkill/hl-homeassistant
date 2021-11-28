@@ -10,8 +10,8 @@ services:
     # network_mode: host
     # user: "${LOCAL_USER}:${LOCAL_USER}"
     ports:
-      - 8123:8123
-      - 21063:21063 # Homekit integration default port
+      - "8123:8123"
+      - "21063:21063" # Homekit integration default port
     environment:
       HA_DB_URL: "${HA_DB_URL}"
       MQTT_PASSWORD: "${MQTT_PASSWORD}"
@@ -28,32 +28,26 @@ services:
       - /dev/ttyACM0:/dev/ttyACM0:rwm
     restart: always
     depends_on:
-      - mariadb
+      - influxdb
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://127.0.0.1:8123" ]
       interval: 30s
       timeout: 10s
       retries: 6
 
-  # MariaDb
-  mariadb:
-    image: mariadb:10.6
+  influxdb:
+    image: influxdb:1.7.1
     restart: unless-stopped
+    ports:
+      - "8086:8086"
+      - "8083:8083"
     environment:
-      MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-      MARIADB_DATABASE: ha_db
-      MARIADB_USER: homeassistant
-      MARIADB_PASSWORD: "${HA_DB_PASSWORD}"
-    user: "${LOCAL_USER}:${LOCAL_USER}"
+      INFLUXDB_DB: homeassistant
+      INFLUXDB_USER: homeassistant
+      INFLUXDB_USER_PASSWORD: "${HA_DB_PASSWORD}"
     volumes:
-      # Local path where the database will be stored.
-      - ./data/mariadb:/var/lib/mysql:rw
-    # Expose in the internal docker network
-    expose:
-      - 3306
-    # Don't expose ports to the outside
-    # ports:
-    #   - "3306:3306"
+      - ./data/influxdb/.influxdb:/var/lib/influxdb
+      - /etc/localtime:/etc/localtime:ro
 
   # mqtt server
   mosquitto:

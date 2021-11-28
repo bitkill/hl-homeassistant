@@ -5,10 +5,14 @@ default_config:
 tts:
   - platform: google_translate
 
-recorder:
-  purge_keep_days: 5
-  # docs: https://docs.sqlalchemy.org/en/14/core/engines.html
-  db_url: !env_var HA_DB_URL mysql://homeassistant:password@mariadb:3306/ha_db
+#recorder:
+#  purge_keep_days: 5
+#  # docs: https://docs.sqlalchemy.org/en/14/core/engines.html
+#  db_url: !env_var HA_DB_URL mysql://homeassistant:password@mariadb:3306/ha_db
+
+influxdb:
+  host: influxdb
+
 
 group: !include groups.yaml
 automation: !include automations.yaml
