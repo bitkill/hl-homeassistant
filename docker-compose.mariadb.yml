@@ -18,3 +18,13 @@ services:
     # Don't expose ports to the outside
     # ports:
     #   - "3306:3306"
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: "mariadb"
+      ADMINER_PLUGINS: "tables-filter tinymce"
+    ports:
+      - 8088:8080
+    depends_on:
+      - mariadb
