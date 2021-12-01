@@ -39,3 +39,6 @@ logs-%: ## View docker logs for a single container
 
 setup: ## Copy necessary files to a successful deployment
 	cp .env.example .env
+
+remove:
+	docker-compose down --rmi all
