@@ -15,6 +15,11 @@ services:
     environment:
       HA_DB_URL: "${HA_DB_URL}"
       MQTT_PASSWORD: "${MQTT_PASSWORD}"
+      INFLUX_ORG: "${INFLUX_ORG}"
+      INFLUX_BUCKET: "${INFLUX_BUCKET}"
+      INFLUX_USER: "${INFLUX_USER}"
+      INFLUX_PASSWORD: "${INFLUX_PASSWORD}"
+      INFLUX_TOKEN: "${INFLUX_TOKEN}"
     volumes:
       - ./data/homeassistant:/config
       - ./overrides/homeassistant/config/configuration.yaml:/config/configuration.yaml
