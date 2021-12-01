@@ -16,6 +16,7 @@ influxdb:
   organization: !env_var INFLUX_ORG
   token: !env_var INFLUX_TOKEN
   bucket: !env_var INFLUX_BUCKET
+  port: 8086
 
 
 group: !include groups.yaml
