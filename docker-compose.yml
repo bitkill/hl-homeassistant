@@ -56,7 +56,8 @@ services:
       DOCKER_INFLUXDB_INIT_RETENTION: 1w
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "${INFLUX_TOKEN}"
     volumes:
-      - ./data/influxdb/.influxdb:/var/lib/influxdb
+      - ./data/influxdb/data:/var/lib/influxdb2
+      - ./data/influxdb/conf:/etc/influxdb2
       - /etc/localtime:/etc/localtime:ro
 
   # mqtt server
