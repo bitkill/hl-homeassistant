@@ -36,15 +36,18 @@ services:
       retries: 6
 
   influxdb:
-    image: influxdb:1.7.1
+    image: influxdb:2.1-alpine
     restart: unless-stopped
     ports:
       - "8086:8086"
       - "8083:8083"
     environment:
-      INFLUXDB_DB: homeassistant
-      INFLUXDB_USER: homeassistant
-      INFLUXDB_USER_PASSWORD: "${HA_DB_PASSWORD}"
+      DOCKER_INFLUXDB_INIT_ORG: "${INFLUX_ORG}"
+      DOCKER_INFLUXDB_INIT_BUCKET: "${INFLUX_BUCKET}"
+      DOCKER_INFLUXDB_INIT_USERNAME: "${INFLUX_USER}"
+      DOCKER_INFLUXDB_INIT_PASSWORD: "${INFLUX_PASSWORD}"
+      DOCKER_INFLUXDB_INIT_RETENTION: 1w
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "${INFLUX_TOKEN}"
     volumes:
       - ./data/influxdb/.influxdb:/var/lib/influxdb
       - /etc/localtime:/etc/localtime:ro

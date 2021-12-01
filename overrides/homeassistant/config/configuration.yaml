@@ -11,7 +11,11 @@ tts:
 #  db_url: !env_var HA_DB_URL mysql://homeassistant:password@mariadb:3306/ha_db
 
 influxdb:
+  api_version: 2
   host: influxdb
+  organization: !env_var INFLUX_ORG
+  token: !env_var INFLUX_TOKEN
+  bucket: !env_var INFLUX_BUCKET
 
 
 group: !include groups.yaml
@@ -21,6 +25,7 @@ scene: !include scenes.yaml
 
 homekit:
   advertise_ip: !env_var HOST_IP 10.0.0.43
+  port: 21063
 
 mqtt:
   broker: !env_var MQTT_BROKER mosquitto
