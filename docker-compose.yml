@@ -31,7 +31,7 @@ services:
       - /var/run/dbus:/var/run/dbus
     devices: # Bluetooth, zigbee, z-wave
       - /dev/ttyACM0:/dev/ttyACM0:rwm
-    restart: always
+    restart: unless-stopped
     depends_on:
       - influxdb
     healthcheck:
@@ -43,6 +43,8 @@ services:
   influxdb:
     image: influxdb:2.1-alpine
     restart: unless-stopped
+    expose:
+      - 8086
 #    ports:
 #      - "8086:8086"
 #      - "8083:8083"
