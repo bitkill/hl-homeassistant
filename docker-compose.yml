@@ -38,9 +38,9 @@ services:
   influxdb:
     image: influxdb:2.1-alpine
     restart: unless-stopped
-    ports:
-      - "8086:8086"
-      - "8083:8083"
+#    ports:
+#      - "8086:8086"
+#      - "8083:8083"
     environment:
       DOCKER_INFLUXDB_INIT_ORG: "${INFLUX_ORG}"
       DOCKER_INFLUXDB_INIT_BUCKET: "${INFLUX_BUCKET}"
