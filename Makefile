@@ -40,5 +40,5 @@ logs-%: ## View docker logs for a single container
 setup: ## Copy necessary files to a successful deployment
 	cp .env.example .env
 
-remove:
+remove: ## Removes all the project's containers and images
 	docker-compose down --rmi all
