@@ -15,11 +15,6 @@ services:
     environment:
       HA_DB_URL: "${HA_DB_URL}"
       MQTT_PASSWORD: "${MQTT_PASSWORD}"
-      INFLUX_ORG: "${INFLUX_ORG}"
-      INFLUX_BUCKET: "${INFLUX_BUCKET}"
-      INFLUX_USER: "${INFLUX_USER}"
-      INFLUX_PASSWORD: "${INFLUX_PASSWORD}"
-      INFLUX_TOKEN: "${INFLUX_TOKEN}"
     volumes:
       - ./data/homeassistant:/config
       - ./overrides/homeassistant/config/configuration.yaml:/config/configuration.yaml
@@ -39,26 +34,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 6
-
-  influxdb:
-    image: influxdb:2.1-alpine
-    restart: unless-stopped
-    expose:
-      - 8086
-#    ports:
-#      - "8086:8086"
-#      - "8083:8083"
-    environment:
-      DOCKER_INFLUXDB_INIT_ORG: "${INFLUX_ORG}"
-      DOCKER_INFLUXDB_INIT_BUCKET: "${INFLUX_BUCKET}"
-      DOCKER_INFLUXDB_INIT_USERNAME: "${INFLUX_USER}"
-      DOCKER_INFLUXDB_INIT_PASSWORD: "${INFLUX_PASSWORD}"
-      DOCKER_INFLUXDB_INIT_RETENTION: 1w
-      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: "${INFLUX_TOKEN}"
-    volumes:
-      - ./data/influxdb/data:/var/lib/influxdb2
-      - ./data/influxdb/conf:/etc/influxdb2
-      - /etc/localtime:/etc/localtime:ro
 
   # mqtt server
   mosquitto:

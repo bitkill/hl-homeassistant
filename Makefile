@@ -20,6 +20,16 @@ down: ## Stops containers
 	-f docker-compose.traefik.yml \
 	down
 
+update:
+	docker-compose
+	-f docker-compose.yml \
+	-f docker-compose.tools.yml \
+	-f docker-compose.deconz.yml \
+	-f docker-compose.traefik.yml \
+	pull
+
+upgrade: down update up
+
 build: ## Builds custom docker images
 	docker-compose build
 
