@@ -28,7 +28,7 @@ services:
       - /dev/ttyACM0:/dev/ttyACM0:rwm
     restart: unless-stopped
     depends_on:
-      - influxdb
+      - mosquitto
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://127.0.0.1:8123" ]
       interval: 30s
