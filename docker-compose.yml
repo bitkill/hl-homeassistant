@@ -48,7 +48,7 @@ services:
       - "./data/mosquitto/log:/mosquitto/log"
     environment:
       TZ: "${TIMEZONE}"
-    #user: "${LOCAL_USER}:${LOCAL_USER}"
+    user: "${LOCAL_USER}:${LOCAL_USER}"
 
   # Node-RED, automate with blocks
   nodered:
