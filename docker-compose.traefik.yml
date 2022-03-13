@@ -4,7 +4,7 @@ services:
 
   homeassistant:
     labels:
-      - "traefik.http.routers.homeassistant.rule=Host(`homeassistant.${NETWORK_DOMAIN}`)"
+      - "traefik.http.routers.homeassistant.rule=Host(`ha.${NETWORK_DOMAIN}`)"
 
   nodered:
     labels:

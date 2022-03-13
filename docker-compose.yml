@@ -9,6 +9,8 @@ services:
     ## Security Warning: Only enable host network mode to find integrations
     # network_mode: host
     # user: "${LOCAL_USER}:${LOCAL_USER}"
+    expose:
+      - 8123
     ports:
       - "8123:8123"
       - "21063:21063" # Homekit integration default port
@@ -53,6 +55,8 @@ services:
   # Node-RED, automate with blocks
   nodered:
     image: nodered/node-red:latest
+    expose:
+      - 1880
     ports:
       - "1880:1880"
     volumes:
