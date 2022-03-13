@@ -5,12 +5,14 @@ services:
   homeassistant:
     labels:
       - "traefik.http.routers.homeassistant.rule=Host(`ha.${NETWORK_DOMAIN}`)"
+      - "traefik.http.routers.homeassistant.service=homeassistant"
       - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
 
 
   nodered:
     labels:
       - "traefik.http.routers.nodered.rule=Host(`nodered.${NETWORK_DOMAIN}`)"
+      - "traefik.http.routers.nodered.service=nodered"
       - "traefik.http.services.nodered.loadbalancer.server.port=1880"
 
   traefik:
@@ -27,4 +29,4 @@ services:
       - "443"
     volumes:
       # So that Traefik can listen to the Docker events
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro

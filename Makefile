@@ -16,7 +16,6 @@ down: ## Stops containers
 	docker-compose \
 	-f docker-compose.yml \
 	-f docker-compose.tools.yml \
-	-f docker-compose.deconz.yml \
 	-f docker-compose.traefik.yml \
 	down
 
