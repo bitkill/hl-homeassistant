@@ -5,10 +5,13 @@ services:
   homeassistant:
     labels:
       - "traefik.http.routers.homeassistant.rule=Host(`ha.${NETWORK_DOMAIN}`)"
+      - "traefik.http.services.homeassistant.loadbalancer.server.port=8123"
+
 
   nodered:
     labels:
       - "traefik.http.routers.nodered.rule=Host(`nodered.${NETWORK_DOMAIN}`)"
+      - "traefik.http.services.nodered.loadbalancer.server.port=1880"
 
   traefik:
     # The official v2 Traefik docker image
