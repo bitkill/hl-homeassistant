@@ -23,7 +23,6 @@ update:
 	docker-compose
 	-f docker-compose.yml \
 	-f docker-compose.tools.yml \
-	-f docker-compose.deconz.yml \
 	-f docker-compose.traefik.yml \
 	pull
 
@@ -36,14 +35,14 @@ logs: ## View docker logs for this project
 	docker-compose \
 	-f docker-compose.yml \
 	-f docker-compose.tools.yml \
-	-f docker-compose.deconz.yml \
+	-f docker-compose.traefik.yml \
 	logs --tail=${LOG_LINES} -f
 
 logs-%: ## View docker logs for a single container
 	docker-compose \
 	-f docker-compose.yml \
 	-f docker-compose.tools.yml \
-	-f docker-compose.deconz.yml \
+	-f docker-compose.traefik.yml \
 	logs --tail=${LOG_LINES} -f $*
 
 setup: ## Copy necessary files to a successful deployment

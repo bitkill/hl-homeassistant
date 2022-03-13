@@ -3,7 +3,8 @@ default_config:
 
 http:
   use_x_forwarded_for: true
-  trusted_proxies: 172.17.0.0/8
+  trusted_proxies:
+    - 172.17.0.0/8
 
 # Text to speech
 tts:
