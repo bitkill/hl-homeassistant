@@ -27,7 +27,7 @@ services:
       - /run/dbus:/run/dbus
       - /var/run/dbus:/var/run/dbus
     devices: # Bluetooth, zigbee, z-wave
-      - /dev/ttyACM0:/dev/ttyACM0:rwm
+      - /dev/ttyACM0:/dev/ttyACM0:rwm # Conbee II
     restart: unless-stopped
     depends_on:
       - mosquitto
@@ -39,7 +39,7 @@ services:
 
   # mqtt server
   mosquitto:
-    image: eclipse-mosquitto:1.6
+    image: eclipse-mosquitto:2.0
     restart: unless-stopped
     ports:
       - "1883:1883"
