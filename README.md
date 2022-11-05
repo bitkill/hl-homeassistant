@@ -1,5 +1,6 @@
-# hl-homeassistant
-Home deployment of home assistant
+# homelab-homeassistant
+Home deployment of home assistant, 
+using docker to simplify deployment.
 
 Includes:
  - Database server for storing records
@@ -21,4 +22,5 @@ up                             Starts up the project's containers
 
 ## Notes
 
-The network discovery integration is still a WIP feature, the current workaround is to share the dbus socket (**dangerous**).
+The network discovery integration is still a WIP feature, 
+the current workaround is to share the dbus socket (**dangerous**).

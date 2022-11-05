@@ -20,7 +20,7 @@ down: ## Stops containers
 	down
 
 update:
-	docker-compose
+	docker-compose \
 	-f docker-compose.yml \
 	-f docker-compose.tools.yml \
 	-f docker-compose.traefik.yml \
